@@ -1,0 +1,80 @@
+---
+import Input from './Input.astro';
+import Textarea from './Textarea.astro';
+import Send from './icons/Send.astro';
+import Loading from './icons/Loading.astro';
+import Chek from './icons/Chek.astro';
+---
+
+<form action="" method="post" id="formElem">
+  <div
+    class="toastEl toast toast-top toast-end translate-x-full transition-all duration-300"
+  >
+    <div class="alert alert-success bg-green-800 border-none text-center">
+      <Chek class="size-6" />
+      <span>Mensaje Enviado con éxito<br />En breve me pondré en contacto</span>
+    </div>
+  </div>
+  <Input name="name" label="Nombre" />
+  <Input name="email" label="Email:" type="mail" />
+  <Input name="phone" label="Teléfono:" type="tel" />
+  <Textarea />
+
+  <div class="form-footer flex justify-end items-center">
+    <button
+      type="submit"
+      class="bg-white/5
+    border border-white/10 rounded-full
+    inline-flex justify-center items-center gap-x-2
+    py-1 px-2 md:py-2 md:px-4
+    text-xs md:text-base
+    transition
+    w-32
+    h-12
+    hover:scale-110 hover:bg-white/10"
+    >
+      <Send class="send-btn size-4" />
+      <span class="send-btn">Enviar</span>
+      <Loading class="loading-btn size-6 hidden" />
+    </button>
+  </div>
+</form>
+
+<script>
+  const formElem = document.getElementById('formElem') as HTMLFormElement;
+  const button = formElem.querySelector('button');
+  const sendBtn = button?.querySelectorAll('.send-btn');
+  const loadinBtn: any = button?.querySelector('.loading-btn');
+  const toastEl = document.querySelector('.toastEl');
+
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+    sendBtn?.forEach((el: any) => {
+      el.style.display = 'none';
+    });
+    loadinBtn.style.display = 'block';
+    let response: any = await fetch('http://127.0.0.1:8000', {
+      method: 'POST',
+      body: new FormData(formElem),
+    });
+
+    let result = await response.json();
+
+    console.log(result);
+    if (result.id) {
+      sendBtn?.forEach((el: any) => {
+        el.style.display = 'block';
+      });
+      loadinBtn.style.display = 'none';
+      toastEl?.classList.add('show');
+      setTimeout(() => {
+        toastEl?.classList.remove('show');
+      }, 5000);
+    }
+  };
+</script>
+<style>
+  .toastEl.show {
+    @apply translate-x-0;
+  }
+</style>

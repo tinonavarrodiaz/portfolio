@@ -1,0 +1,33 @@
+<div
+  class="input-group w-full h-auto border-b border-slate-300/50 mb-8 mt-12 relative"
+>
+  <textarea
+    name="msg"
+    id="msg"
+    class="block w-full h-12 px-2 bg-transparent py-3 transition-all duration-300 resize-none text-yellow-200/90"
+    placeholder=" "></textarea>
+  <label
+    for="msg"
+    class="absolute top-3 left-3 transition-all duration-300 text-yellow-200/90"
+    >Mensaje:</label
+  >
+</div>
+
+<style>
+  textarea {
+    @apply px-2;
+  }
+  textarea:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+  textarea:focus,
+  textarea:not(:placeholder-shown) {
+    @apply h-32;
+  }
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    @apply -top-3 left-2 translate-y-[-50%] text-white/60;
+  }
+</style>

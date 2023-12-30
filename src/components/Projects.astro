@@ -1,0 +1,162 @@
+---
+import AstroIcon from './icons/AstroIcon.astro';
+import Css from './icons/Css.astro';
+import Html from './icons/Html.astro';
+import Js from './icons/Js.astro';
+import LinkIcon from './icons/LinkIcon.astro';
+import NextJS from './icons/NextJS.astro';
+import Php from './icons/Php.astro';
+import React from './icons/React.astro';
+import Shopify from './icons/Shopify.astro';
+import Tailwind from './icons/Tailwind.astro';
+// import {  } from "module";
+
+const TAGS = {
+  NEXT: {
+    name: 'Next.js',
+    class: 'bg-black text-white',
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: 'Tailwind CSS',
+    class: 'bg-[#003159] text-white',
+    icon: Tailwind,
+  },
+  HTML: {
+    name: 'HTML',
+    class: 'bg-[#dd4b25] text-white',
+    icon: Html,
+  },
+  CSS: {
+    name: 'CSS',
+    class: 'bg-[#1a6fb4] text-white',
+    icon: Css,
+  },
+  JS: {
+    name: 'JS',
+    class: 'bg-[#e8d44d] text-white',
+    icon: Js,
+  },
+  ASTRO: {
+    name: 'Astro',
+    class: 'bg-[#f75a01] text-white',
+    icon: AstroIcon,
+  },
+  SHOPY: {
+    name: 'Shopify',
+    class: 'bg-[#398b32] text-white',
+    icon: Shopify,
+  },
+  PHP: {
+    name: 'PHP',
+    class: 'bg-black text-white',
+    icon: Php,
+  },
+  REACT: {
+    name: 'React',
+    class: 'bg-[#212121] text-white',
+    icon: React,
+  },
+};
+const PROJECTS = [
+  {
+    title: 'AADOCCSA',
+    description:
+      'Estamos en el mercado del aire acondicionado desde hace más de 30 años ofreciendo la máxima confianza a todos nuestros clientes en cada una de las operaciones que realizamos.',
+    link: 'http://aadoccsa.com.mx/cliente-final/',
+    image: 'https://nh-digital.dev/img/portafolio/aadoccsa.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS],
+  },
+  {
+    title: 'DESTILADORA AGAVE AZUL',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'http://destiladoraagaveazul.mx/',
+    image: 'https://nh-digital.dev/img/portafolio/agave-azul.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.ASTRO],
+  },
+  {
+    title: 'EZ OATS',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'https://myezoats.com/',
+    image: '/ezoats.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.SHOPY],
+  },
+  {
+    title: 'Curamia Tequila',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'https://curamiatequila.com/',
+    image: '/curamia.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.SHOPY],
+  },
+  {
+    title: 'IATRIKOS',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'https://iatrikos.com/',
+    image: 'https://nh-digital.dev/img/portafolio/iatrikos.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS],
+  },
+  {
+    title: 'PROMEDICA GARCIA',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'http://promedica-garcia.com.mx/',
+    image: 'https://nh-digital.dev/img/portafolio/promedica.jpg',
+    tags: [TAGS.HTML, TAGS.PHP, TAGS.CSS, TAGS.JS],
+  },
+  {
+    title: 'TEQUILA MANDALA',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'http://tequilamandala.com/',
+    image: 'https://nh-digital.dev/img/portafolio/porta27.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS],
+  },
+  {
+    title: 'TEQUILA DON ALBERTO',
+    description:
+      'DESTILADORA DE AGAVE AZUL, S.A. de C.V., empresa 100% mexicana establecida en el pueblo de San Juanito de Escobedo, ubicado a 80 km de Guadalajara, en el centro occidental del Estado de Jalisco.',
+    link: 'http://donalberto.mx/',
+    image: 'https://nh-digital.dev/img/portafolio/alberto.jpg',
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.REACT],
+  },
+];
+---
+
+<div class="lg:grid grid-cols-2 gap-8">
+  {
+    PROJECTS.map(({ image, title, tags, link }) => (
+      <>
+        <article>
+          <h3 class="text-xl flex items-center gap-2 font-semibold text-yellow-200 mb-2">
+            {title}
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              <LinkIcon class="size-5" />
+            </a>
+          </h3>
+
+          <ul class="flex gap-x-2 flex-row mb-2">
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-[.5em] ${tag.class} bg-transparent py-1 px-2`}
+                >
+                  <tag.icon class="size-5" />
+                </span>
+              </li>
+            ))}
+          </ul>
+          <img
+            loading="lazy"
+            class="rounded shadow-2xl shadow-white/10 aspect-video"
+            src={image}
+            alt={`Captura de pantalla del proyecto ${image}`}
+          />
+        </article>
+      </>
+    ))
+  }
+</div>
