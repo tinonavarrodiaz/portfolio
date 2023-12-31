@@ -12,7 +12,7 @@ import Chek from './icons/Chek.astro';
   >
     <div class="alert alert-success bg-green-800 border-none text-center">
       <Chek class="size-6" />
-      <span>Mensaje Enviado con éxito<br />En breve me pondré en contacto</span>
+      <span>Mensaje Enviado con éxito</span>
     </div>
   </div>
   <Input name="name" label="Nombre" />
@@ -49,19 +49,25 @@ import Chek from './icons/Chek.astro';
 
   formElem.onsubmit = async (e) => {
     e.preventDefault();
+    console.log('enviando');
     sendBtn?.forEach((el: any) => {
       el.style.display = 'none';
     });
     loadinBtn.style.display = 'block';
-    let response: any = await fetch('http://127.0.0.1:8000', {
-      method: 'POST',
-      body: new FormData(formElem),
-    });
+    let response: any = await fetch(
+      'https://sendmail-alpha.vercel.app/api/mail',
+      {
+        method: 'POST',
+        body: new FormData(formElem),
+        referrerPolicy: 'strict-origin-when-cross-origin',
+        mode: 'cors',
+      }
+    );
 
     let result = await response.json();
 
     console.log(result);
-    if (result.id) {
+    if (result.data.id) {
       sendBtn?.forEach((el: any) => {
         el.style.display = 'block';
       });
